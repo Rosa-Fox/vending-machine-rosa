@@ -1,0 +1,11 @@
+<h1>Coin</h1>
+<%= form_tag("/coin/add_coin", method: "post") do %>
+  <div>
+    <label for="coins">Coin:</label>
+      <% @coins.each do |coin| %>
+        <br><%= radio_button_tag 'coins', coin, @coins == coin %>
+        <%= coin %> pence
+    <% end %>
+  </div>
+  <%= submit_tag("Add coins!") %>
+<% end %>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RosaFoxVendingMachine</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <p>Your current balance is:
+  <% if current_user.balance.nil? %>
+    0.00
+  <% else %>
+    <%= current_user.balance %>
+  <% end %>
+  pence
+  <% if flash[:notice] %>
+    <div data-alert class="alert-box success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div data-alert class="alert-box alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  <%= yield %>
+</body>
+</html>
