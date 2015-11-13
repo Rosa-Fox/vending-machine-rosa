@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RosaFoxVendingMachine</title>
+  <title>VendingMachine</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,7 +15,6 @@
   <% end %>
   pence
 </p>
-<p>There are <%= Product.count %> different snacks to try!</p>
   <%= link_to 'Home', root_url %>
   <% if flash[:notice] %>
     <div data-alert class="alert-box success">

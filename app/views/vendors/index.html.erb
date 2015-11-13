@@ -1,3 +1,14 @@
 <h1>Time to vend!!</h1>
 <%= link_to 'Add Coins to your balance', coins_path %>
 <%= link_to 'Restock snacks!', products_restock_path %>
+
+Which delicious snack would you like?
+<%= form_tag("/products/purchase", method: "post") do %>
+<% @products.each do |product| %>
+  <br><%= radio_button_tag 'product', product.id, @products == product %>
+  <%= product.name.capitalize %>
+  Price: <%= product.price %>pence
+  Quantity: <%= product.quantity %>
+<% end %>
+<%= submit_tag("Buy snack!") %>
+<% end %>
