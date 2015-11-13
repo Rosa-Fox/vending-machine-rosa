@@ -14,6 +14,9 @@
     <%= current_user.balance %>
   <% end %>
   pence
+</p>
+<p>There are <%= Product.count %> different snacks to try!</p>
+  <%= link_to 'Home', root_url %>
   <% if flash[:notice] %>
     <div data-alert class="alert-box success">
       <%= flash[:notice] %>
