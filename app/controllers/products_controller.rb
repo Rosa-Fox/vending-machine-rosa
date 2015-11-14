@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   def restock
     Product.delete_all
     `rake db:seed`
+    flash[:alert] = "The vending machine is full of snacks!"
     redirect_to root_url
   end
 
