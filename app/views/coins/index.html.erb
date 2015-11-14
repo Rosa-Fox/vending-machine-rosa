@@ -1,11 +1,15 @@
-<h1>Coin</h1>
-<%= form_tag("/coin/add_coin", method: "post") do %>
-  <div>
-    <label for="coins">Coin:</label>
-      <% @coins.each do |coin| %>
-        <br><%= radio_button_tag 'coins', coin, @coins == coin %>
-        <%= coin %> pence
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Coin</h1></div>
+  <div class="panel-body">
+    <%= form_tag("/coin/add_coin", method: "post") do %>
+      <div>
+        <label for="coins">Coin:</label>
+          <% @coins.each do |coin| %>
+            <br><%= radio_button_tag 'coins', coin, @coins == coin %>
+            £<%= number_with_precision(coin.to_f / 100, :precision => 2) %>
+          <% end %>
+      </div>
+      <%= submit_tag("Add coins!", class: "btn btn-success") %>
     <% end %>
   </div>
-  <%= submit_tag("Add coins!") %>
-<% end %>
+</div>

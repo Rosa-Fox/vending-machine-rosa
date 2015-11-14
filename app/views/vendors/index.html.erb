@@ -1,14 +1,23 @@
-<h1>Time to vend!!</h1>
-<%= link_to 'Add Coins to your balance', coins_path %>
-<%= link_to 'Restock snacks!', products_restock_path %>
-
-Which delicious snack would you like?
-<%= form_tag("/products/purchase", method: "post") do %>
-<% @products.each do |product| %>
-  <br><%= radio_button_tag 'product', product.id, @products == product %>
-  <%= product.name.capitalize %>
-  Price: £<%= number_with_precision(product.price.to_f / 100, :precision => 2) %>
-  Quantity: <%= product.quantity %>
-<% end %>
-<%= submit_tag("Buy snack!") %>
-<% end %>
+<h1>Choose your favourite!</h1>
+<div class="row">
+  <%= form_tag("/products/purchase", method: "post") do %>
+    <% @products.each_slice(3) do |array_of_3| %>
+      <div class="row">
+        <% array_of_3.each do |product| %>
+          <div class="col-sm-6 col-md-4" >
+            <div class="thumbnail">
+              <img src="images/<%= product.name %>.jpg" alt="snacks">
+              <div class="caption">
+                <h3><%= product.name.capitalize %></h3>
+                <br><%= radio_button_tag 'product', product.id, @products == product %>
+                <h4>Price: £<%= number_with_precision(product.price.to_f / 100, :precision => 2) %></h4>
+                <h5>Quantity: <%= product.quantity %></h5>
+                <%= submit_tag("Buy snack!") %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

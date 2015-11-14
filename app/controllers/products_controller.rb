@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!
   def restock
     Product.delete_all
     `rake db:seed`
@@ -19,10 +20,10 @@ class ProductsController < ApplicationController
         current_user.save
         flash[:alert] = "Enjoy your #{product.name.capitalize}!"
         return_home
-    else
-      flash[:alert] = 'You have run out of coins!'
-      return_home
+      else
+        flash[:alert] = 'You have run out of coins!'
+        return_home
+      end
     end
-  end
   end
 end
