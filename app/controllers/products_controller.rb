@@ -17,9 +17,10 @@ class ProductsController < ApplicationController
         product.save
         current_user.balance = current_user.balance - product.price
         current_user.save
+        flash[:alert] = "Enjoy your #{product.name.capitalize}!"
         return_home
     else
-      flash.now.alert = 'You have run out of coins!'
+      flash[:alert] = 'You have run out of coins!'
       return_home
     end
   end

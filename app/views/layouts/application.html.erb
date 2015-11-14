@@ -16,15 +16,8 @@
   pence
 </p>
   <%= link_to 'Home', root_url %>
-  <% if flash[:notice] %>
-    <div data-alert class="alert-box success">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-  <% if flash[:alert] %>
-    <div data-alert class="alert-box alert">
-      <%= flash[:alert] %>
-    </div>
+  <% flash.each do |name, msg| %>
+   <%= content_tag :div, msg, class: "alert" %>
   <% end %>
   <%= yield %>
 </body>
