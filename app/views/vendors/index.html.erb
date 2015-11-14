@@ -7,7 +7,7 @@ Which delicious snack would you like?
 <% @products.each do |product| %>
   <br><%= radio_button_tag 'product', product.id, @products == product %>
   <%= product.name.capitalize %>
-  Price: <%= product.price %>pence
+  Price: £<%= number_with_precision(product.price.to_f / 100, :precision => 2) %>
   Quantity: <%= product.quantity %>
 <% end %>
 <%= submit_tag("Buy snack!") %>
