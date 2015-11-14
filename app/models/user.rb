@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   after_initialize do
-    self[:balance] = 50
+    self[:balance] ||= 50
   end
 end
