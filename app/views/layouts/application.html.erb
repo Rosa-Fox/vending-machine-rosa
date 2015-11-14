@@ -26,7 +26,7 @@
     <div class="container">
       <div class="jumbotron">
         <h1>Vendor</h1>
-        <p>Which delicious snack will you choose from vendor?</p>
+        <p>Which delicious snack will you choose from Vendor?</p>
         <% if !current_user.nil? %>
           <p>Your current balance is:
             £<%= number_with_precision(current_user.balance.to_f / 100, :precision => 2) %>
