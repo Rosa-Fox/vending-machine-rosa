@@ -1,4 +1,4 @@
-== README for Vendor!
+# README for Vendor!
 
 This application was built using Ruby 2.2.2 and Rails 4.2.4
 
