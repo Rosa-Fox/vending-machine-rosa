@@ -1,2 +1,2 @@
-class Coin
+class Coin < ActiveRecord::Base
 end

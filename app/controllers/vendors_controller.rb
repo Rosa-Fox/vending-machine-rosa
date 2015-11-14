@@ -5,7 +5,6 @@ class VendorsController < ApplicationController
   end
 
   def withdraw
-    coinage = current_user.balance
     current_user.update(:balance => 0)
     flash[:alert] = "Your coins have been returned!"
     redirect_to root_url
