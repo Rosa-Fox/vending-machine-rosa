@@ -3,4 +3,11 @@ class VendorsController < ApplicationController
   def index
     @products = Product.all
   end
+
+  def withdraw
+    coinage = current_user.balance
+    current_user.update(:balance => 0)
+    flash[:alert] = "Your coins have been returned!"
+    redirect_to root_url
+  end
 end

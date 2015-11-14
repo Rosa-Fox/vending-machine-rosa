@@ -7,9 +7,7 @@ class CoinsController < ApplicationController
   def add_coin
     coins = params[:coins]
     user = User.find(current_user)
-    if user.balance.nil?
-      user.balance = 0
-    end
+    user.balance = 0 if user.balance.nil?
     user.balance = user.balance + coins.to_i
     user.save
     redirect_to coins_path
