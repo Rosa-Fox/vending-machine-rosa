@@ -7,18 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if !current_user.nil? && current_user.balance.nil? %>
   <p>Your current balance is:
-  <% if current_user.balance.nil? %>
-    0.00
-  <% else %>
-    <%= current_user.balance %>
+    0.00 pence
   <% end %>
-  pence
+  <% if !current_user.nil? %>
+  <p>Your current balance is:
+    <%= current_user.balance %> pence
+  <% end %>
 </p>
   <%= link_to 'Home', root_url %>
   <% flash.each do |name, msg| %>
    <%= content_tag :div, msg, class: "alert" %>
   <% end %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
   <%= yield %>
 </body>
 </html>

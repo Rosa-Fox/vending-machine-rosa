@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     product = Product.find(params[:product])
     return_home = redirect_to root_url
     if product.quantity <= 0
-      flash.now.alert = 'No snacks left!'
+      flash[:alert] = 'No snacks left!'
       return_home
     else
       if current_user.balance > product.price
