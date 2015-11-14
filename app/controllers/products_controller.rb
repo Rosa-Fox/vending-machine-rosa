@@ -8,9 +8,6 @@ class ProductsController < ApplicationController
 
   def purchase
     return_home = redirect_to root_url
-    if params[:product].to_s.blank?
-      return_home
-    end
     product = Product.find(params[:product])
     if product.quantity <= 0
       flash[:alert] = 'No snacks left!'
