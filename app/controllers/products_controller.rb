@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
       flash[:alert] = 'No snacks left!'
       return_home
     else
-      if current_user.balance > product.price
+      if current_user.balance => product.price
         product.quantity = product.quantity - 1
         product.save
         current_user.balance = current_user.balance - product.price
