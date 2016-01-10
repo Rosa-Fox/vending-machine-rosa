@@ -10,4 +10,4 @@ To get set up!
 
 * `rails s` to start the server
 
-Navigate to `localhost:3000`
+Navigate to `localhost:3000/users/sign_up`
